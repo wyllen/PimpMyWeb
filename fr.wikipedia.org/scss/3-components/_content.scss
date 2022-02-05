@@ -48,15 +48,91 @@
   border: none !important;
 }
 
-body[class*="rootpage-Wikipédia"] .mw-parser-output {
-  display: flex;
-  flex-direction: column;
-  [id*="_contenu"] {
-    order: 0;
-  }
+body[class*="rootpage-Wikipédia"] {
+  .mw-parser-output {
+    display: flex;
+    flex-direction: column;
+    [id*="_contenu"] {
+      order: 0;
+    }
 
-  [id*="_en-tete"] {
-    order: 1;
+    [id*="_en-tete"] {
+      order: 1;
+    }
+  }
+}
+
+body.page-Wikipédia_Accueil_principal {
+  .portail-droite .accueil_2017_cadre:last-child {
+    position: relative;
+    overflow: hidden;
+    order: -1;
+    &::before {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      inset: 0;
+      z-index: 2;
+      box-shadow: inset 0 13rem 7rem -10rem rgba($black, 0.5),
+        inset 0 -13rem 7rem -10rem rgba($black, 0.5);
+    }
+    img {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    > h2 {
+      color: $white;
+    }
+    > h2,
+    div[class] {
+      position: relative;
+      z-index: 3;
+    }
+    > div:not([class]) {
+      > div:last-child {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 0;
+        color: $white;
+        text-align: center;
+        transform: translateY(-50%);
+        transition: 250ms ease all;
+        opacity: 0;
+        * {
+          color: $white;
+          font-weight: bold;
+          font-size: 1rem;
+        }
+        > small {
+          width: 100%;
+        }
+      }
+    }
+    &:hover {
+      &::before {
+        box-shadow: inset 0 13rem 14rem -10rem rgba($black, 0.5),
+          inset 0 -13rem 7rem -10rem rgba($black, 0.5);
+      }
+      > div:not([class]) {
+        > div:last-child {
+          opacity: 1;
+        }
+      }
+    }
+    .liste-horizontale {
+      position: absolute !important;
+      bottom: 0;
+      right: 0;
+      padding: 1rem;
+      a {
+        color: $white;
+      }
+    }
   }
 }
 
@@ -125,77 +201,6 @@ body[class*="rootpage-Wikipédia"] .mw-parser-output {
     h2 {
       &::before {
         background: $white;
-      }
-    }
-  }
-  .portail-droite &:last-child {
-    position: relative;
-    overflow: hidden;
-    order: -1;
-    &::before {
-      content: "";
-      position: absolute;
-      pointer-events: none;
-      inset: 0;
-      z-index: 2;
-      box-shadow: inset 0 13rem 7rem -10rem rgba($black, 0.5),
-        inset 0 -13rem 7rem -10rem rgba($black, 0.5);
-    }
-    img {
-      position: absolute;
-      z-index: 1;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    > h2 {
-      color: $white;
-    }
-    > h2,
-    div[class] {
-      position: relative;
-      z-index: 3;
-    }
-    > div:not([class]) {
-      > div:last-child {
-        position: absolute;
-        z-index: 2;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        transform: translateY(-50%);
-        transition: 250ms ease all;
-        opacity: 0;
-        * {
-          color: $white;
-          font-weight: bold;
-          font-size: 1rem;
-        }
-        > small {
-          width: 100%;
-        }
-      }
-    }
-    &:hover {
-      &::before {
-        box-shadow: inset 0 13rem 14rem -10rem rgba($black, 0.5),
-          inset 0 -13rem 7rem -10rem rgba($black, 0.5);
-      }
-      > div:not([class]) {
-        > div:last-child {
-          opacity: 1;
-        }
-      }
-    }
-    .liste-horizontale {
-      position: absolute !important;
-      bottom: 0;
-      right: 0;
-      padding: 1rem;
-      a {
-        color: $white;
       }
     }
   }
@@ -301,4 +306,45 @@ body:not([class*="rootpage-Wikipédia"]) {
       background: none !important;
     }
   }
+}
+body[class*="rootpage-Aide"] {
+  .mw-parser-output > .center > :nth-child(7) {
+    margin-block: 2rem;
+    gap: 1.5rem;
+    > div {
+      box-shadow: none !important;
+      background: $contentBg !important;
+      border-radius: 1.5rem !important;
+      padding: 2.5rem 3rem !important;
+      border: none !important;
+      width: 300px !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+}
+
+body[class*="page-Discussion_aide"] {
+  .aa-fond-gris {
+    background: none;
+    padding: 0;
+    width: fit-content;
+
+    p + p {
+      margin-top: 1.5rem;
+    }
+    .mw-redirect {
+      display: block;
+      margin: 0.5rem 0;
+      text-align: center;
+      + br {
+        display: none;
+      }
+    }
+  }
+}
+
+.mw-ui-button {
+  border-radius: 0.7em;
 }
