@@ -249,3 +249,56 @@ body:not([class*="rootpage-Wikipédia"]) {
     }
   }
 }
+
+/* Infobox */
+.infobox {
+  &_v3 {
+    overflow: hidden;
+    border-radius: 1.5rem;
+    padding: 2rem !important;
+    background: $primary !important;
+    color: $white;
+    * {
+      color: $white !important;
+    }
+    .entete {
+      margin: -2rem;
+      margin-bottom: 1rem;
+      background-size: cover;
+      width: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    hr {
+      height: 1px !important;
+      margin: 1rem -2rem;
+      background: $white !important;
+      opacity: 0.5;
+    }
+    [style*="background-color"]:not(hr) {
+      background: none !important;
+    }
+    img {
+      &[src*="Blue_pencil.svg.png"] {
+        filter: brightness(10);
+      }
+    }
+  }
+  &_v2 {
+    overflow: hidden;
+    border-radius: 1.5rem;
+    padding: 2rem !important;
+    padding-top: 0 !important;
+    background: $primary !important;
+    color: $white;
+    * {
+      color: $white !important;
+    }
+    .entete {
+      padding: 0 !important;
+      text-align: center;
+      background: none !important;
+    }
+  }
+}

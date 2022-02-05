@@ -6,7 +6,7 @@
   "author": "Vincent DURAND <pro.vincentd@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "gulp"
+    "fr.wikipedia.org": "gulp --website https://fr.wikipedia.org --folder fr.wikipedia.org"
   },
   "devDependencies": {
     "browser-sync": "^2.27.7",
