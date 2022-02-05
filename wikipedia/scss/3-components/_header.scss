@@ -1,0 +1,102 @@
+@use "../1-settings/variables" as *;
+
+.mw-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  margin-top: 0;
+  padding: 0 1rem;
+  background: rgba($white, 0.8);
+  &:before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    backdrop-filter: blur($blur);
+    z-index: -1;
+  }
+  #mw-sidebar-button {
+    display: none;
+  }
+  .mw-logo {
+    &-tagline,
+    &-icon {
+      display: none;
+    }
+  }
+}
+
+//SEARCH
+.vector-search-box {
+  display: flex;
+  justify-content: center;
+}
+.vector-search-box-vue > div {
+  position: relative;
+  margin-left: 0 !important;
+  border: none;
+  border-radius: 0.5rem !important;
+  background: $contentBg;
+  .searchButton[name="go"] {
+    position: absolute;
+    right: 1rem;
+    left: auto !important;
+  }
+  .vector-search-box-input {
+    background: none;
+    padding: 1rem 2rem !important;
+    border: none;
+    height: 2.5rem;
+    font-size: 1.2rem;
+    padding-right: 7rem !important;
+    width: 25rem !important;
+  }
+}
+
+.wvui-typeahead-search {
+  background: $contentBg;
+  position: relative;
+  margin-left: 0 !important;
+  border: none;
+  border-radius: 0.5rem !important;
+  &__wrapper {
+    position: static;
+  }
+  &__suggestions {
+    background: rgba($white, 0.8);
+    overflow: hidden;
+    border-radius: 0 0 1rem 1rem;
+    border: none;
+    box-shadow: 0.3px 2.4px 2.5px -23px rgba(#000, 0.04),
+      0.8px 5.9px 5.9px -23px rgba(#000, 0.06),
+      1.5px 11px 11.1px -23px rgba(#000, 0.07),
+      2.7px 19.7px 19.9px -23px rgba(#000, 0.08),
+      5px 36.8px 37.2px -23px rgba(#000, 0.1),
+      12px 88px 89px -23px rgba(#000, 0.13);
+    &:before {
+      position: absolute;
+      content: "";
+      inset: 0;
+      backdrop-filter: blur($blur);
+      z-index: -1;
+    }
+  }
+  .wvui-input__input {
+    background: none;
+    padding: 1rem 2rem !important;
+    border: none;
+    height: 2.5rem;
+    font-size: 1.2rem;
+    width: 20rem !important;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  .wvui-input__start-icon {
+    position: absolute;
+    right: -5rem;
+    left: auto !important;
+  }
+  .wvui-typeahead-search__submit {
+    opacity: 0 !important;
+  }
+}

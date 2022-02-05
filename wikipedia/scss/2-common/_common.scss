@@ -1,0 +1,66 @@
+@use "../1-settings/variables" as *;
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Merriweather", serif !important;
+  font-weight: 700;
+}
+
+a {
+  color: $primary;
+  &:active {
+    color: $primary;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 12px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba($black, 0.05);
+  transition: 250ms ease all;
+  opacity: 0.2;
+  border: 0px none #ffffff;
+  border-radius: 100px;
+  &:active,
+  &:hover {
+    background: #7d7d7d;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: rgba($black, 0.05);
+  transition: 250ms ease all;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+  &:active,
+  &:hover {
+    background: #d1d1d1;
+  }
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+*:hover > ::-webkit-scrollbar-track {
+  background: rgba($black, 0.1);
+}
+
+*:hover > ::-webkit-scrollbar-thumb {
+  background: rgba($black, 0.1);
+}

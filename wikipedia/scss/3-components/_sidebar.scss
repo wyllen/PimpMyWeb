@@ -1,0 +1,30 @@
+@use "../1-settings/variables" as *;
+@use "../1-settings/mixins" as *;
+
+#mw-panel {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  height: calc(100vh - 50px);
+  overflow: auto;
+  width: 16rem;
+  border: none !important;
+  .vector-menu-portal {
+    .mw-list-item {
+      a {
+        font-size: 0.8rem;
+        color: $black !important;
+        display: block;
+        padding: 0.1rem 0rem;
+      }
+    }
+    .vector-menu-heading {
+      @include titleBorder();
+      background: none;
+      color: $black;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 0.6em;
+    }
+  }
+}

@@ -45,15 +45,22 @@ var config = {
 
 gulp.task("sass", function () {
   return gulp
-    .src(config.srcDir + "/scss/**/*.scss")
+    .src(config.srcDir + "/scss/*.scss")
     .pipe(sass().on("error", sass.logError))
     .pipe(gulp.dest(config.injectDir + "/css"))
     .pipe(browserSync.stream());
 });
 
+gulp.task("js", function () {
+  return gulp
+    .src(config.srcDir + "/js/**/*.js")
+    .pipe(gulp.dest(config.injectDir + "/js"))
+    .pipe(browserSync.stream());
+});
+
 gulp.task(
   "browser-sync",
-  gulp.series("sass", function () {
+  gulp.series("sass", "js", function () {
     browserSync.init({
       proxy: {
         target: config.remoteURL,
@@ -83,6 +90,29 @@ gulp.task(
             return localCssAssets + match;
           },
         },
+        {
+          // Inject Local JS at the end of BODY
+          match: /<\/body>/i,
+          fn: function (req, res, match) {
+            var localJsAssets = "";
+            for (var i = 0; i < config.localAssets.js.length; i++) {
+              var files = glob.sync(config.localAssets.js[i], {
+                cwd: config.injectDir,
+              });
+
+              for (var file in files) {
+                localJsAssets +=
+                  '<script src="' +
+                  config.localPath +
+                  "/" +
+                  files[file] +
+                  '"></script>';
+              }
+            }
+
+            return localJsAssets + match;
+          },
+        },
       ],
       serveStatic: [
         {
@@ -94,7 +124,8 @@ gulp.task(
       https: true,
     });
 
-    gulp.watch("wikipedia/scss/*.scss", gulp.series("sass"));
+    gulp.watch("wikipedia/scss/**/*.scss", gulp.series("sass"));
+    gulp.watch("wikipedia/js/**/*.js", gulp.series("js"));
   })
 );
 

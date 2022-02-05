@@ -1,0 +1,15 @@
+@use "./variables" as *;
+
+@mixin titleBorder() {
+  position: relative;
+  overflow: visible !important;
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: -0.3rem;
+    left: 0;
+    width: 2em;
+    height: 3px;
+    background: $primary;
+  }
+}

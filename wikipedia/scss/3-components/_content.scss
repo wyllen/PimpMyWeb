@@ -1,0 +1,251 @@
+@use "../1-settings/variables" as *;
+@use "../1-settings/mixins" as *;
+
+//TABS
+.vector-menu-tabs {
+  background: none;
+  li {
+    background: none;
+    a {
+      color: $black;
+      background: none;
+      &:hover {
+        box-shadow: 0 2px $black;
+        text-decoration: none;
+      }
+    }
+
+    &.selected {
+      background: none;
+      a {
+        box-shadow: 0 2px $black;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+//CONTENT
+
+.mw-workspace-container {
+  max-width: 100%;
+  margin: 0 !important;
+  padding-left: 19rem;
+  padding-right: 2rem;
+}
+.mw-workspace-container {
+  position: static;
+}
+.mw-content-container,
+.mw-article-toolbar-container {
+  max-width: 100%;
+  margin-left: 0 !important;
+}
+.mw-article-toolbar-container {
+  border-bottom: 2px solid rgba($black, 0.1);
+}
+.mw-body {
+  border: none !important;
+}
+
+body[class*="rootpage-Wikipédia"] .mw-parser-output {
+  display: flex;
+  flex-direction: column;
+  [id*="_contenu"] {
+    order: 0;
+  }
+
+  [id*="_en-tete"] {
+    order: 1;
+  }
+}
+
+.mw-page-container {
+  max-width: 100%;
+  padding: 0;
+  border: none;
+  background: $contentBg;
+}
+
+.vector-body {
+  font-size: calc(1em * 0.9375);
+  h2 {
+    @include titleBorder();
+    margin-bottom: 1.2rem !important;
+    border-bottom: none !important;
+  }
+}
+
+//ACCUEIL
+[id*="accueil"][id*="_en-tete"] {
+  border: none !important;
+  background: $white !important;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  > div {
+    padding: 2.5rem 3rem !important;
+    padding-bottom: 2.4rem !important;
+  }
+  [id*="lien-mobile"] {
+    display: none;
+  }
+  .colonnes {
+    margin: 0 !important;
+    column-width: 10em !important;
+    column-count: 2 !important;
+    column-gap: 2em !important;
+    > div {
+      margin: 0 !important;
+    }
+    li {
+      a {
+        display: block;
+        padding: 0.5rem 0;
+      }
+    }
+  }
+}
+.portail-droite {
+  display: flex;
+  flex-direction: column;
+}
+.accueil_2017_cadre {
+  box-shadow: none;
+  background: $white;
+  border-radius: 1.5rem;
+  padding: 2.5rem 3rem;
+  .portail-gauche &:first-child {
+    background: $primary;
+    color: $white;
+    h2,
+    a {
+      color: $white;
+      font-weight: bold;
+    }
+    h2 {
+      &::before {
+        background: $white;
+      }
+    }
+  }
+  .portail-droite &:last-child {
+    position: relative;
+    overflow: hidden;
+    order: -1;
+    &::before {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      inset: 0;
+      z-index: 2;
+      box-shadow: inset 0 13rem 7rem -10rem rgba($black, 0.5),
+        inset 0 -13rem 7rem -10rem rgba($black, 0.5);
+    }
+    img {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    > h2 {
+      color: $white;
+    }
+    > h2,
+    div[class] {
+      position: relative;
+      z-index: 3;
+    }
+    > div:not([class]) {
+      > div:last-child {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        transform: translateY(-50%);
+        transition: 250ms ease all;
+        opacity: 0;
+        * {
+          color: $white;
+          font-weight: bold;
+          font-size: 1rem;
+        }
+        > small {
+          width: 100%;
+        }
+      }
+    }
+    &:hover {
+      &::before {
+        box-shadow: inset 0 13rem 14rem -10rem rgba($black, 0.5),
+          inset 0 -13rem 7rem -10rem rgba($black, 0.5);
+      }
+      > div:not([class]) {
+        > div:last-child {
+          opacity: 1;
+        }
+      }
+    }
+    .liste-horizontale {
+      position: absolute !important;
+      bottom: 0;
+      right: 0;
+      padding: 1rem;
+      a {
+        color: $white;
+      }
+    }
+  }
+}
+
+.plainlinks.nomobile {
+  display: none;
+}
+
+// PAGE CONTENT
+
+body:not([class*="rootpage-Wikipédia"]) .mw-parser-output {
+  border-radius: 1.5rem;
+  padding: 2.5rem 3rem;
+  background: $white;
+}
+/* Page header */
+body:not([class*="rootpage-Wikipédia"]) {
+  .mw-body-header {
+    position: relative;
+    height: 7rem;
+    overflow: hidden;
+    border-radius: 1.5rem 1.5rem 0 0;
+    padding: 2rem;
+    margin-bottom: -3rem;
+    box-shadow: inset 0 20rem 10rem -10rem;
+    h1 {
+      position: relative;
+      z-index: 2;
+      color: $white;
+      border: none;
+    }
+    &:before {
+      content: "";
+      background: var(--header-page-bg);
+      background-color: $primary;
+      background-size: cover;
+      background-position: 50%;
+      position: absolute;
+      inset: 0;
+      filter: blur(100px);
+      opacity: 1;
+    }
+    #p-lang-btn {
+      position: relative;
+      z-index: 3;
+      * {
+        color: $white;
+        filter: brightness(10);
+      }
+    }
+  }
+}
